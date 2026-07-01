@@ -1,0 +1,10 @@
+/* ============================================================
+   KIOSK LABEL FIX - the ONLY change vs. the live kumaranhospitals.com
+   Keeps the 5 quick-access service labels on a single line (no wrapping).
+   ============================================================ */
+.elementor-element-c4f72c1 .elementor-widget-heading{width:100%!important;max-width:100%!important;}
+.elementor-element-c4f72c1 .elementor-heading-title,
+.elementor-element-c4f72c1 .elementor-heading-title a{
+  display:block!important;width:100%!important;white-space:nowrap!important;
+  font-size:clamp(11px,1.9vw,19px)!important;line-height:1.25!important;
+  letter-spacing:0!important;text-align:center!important;overflow:visible!important;text-overflow:clip!important;}

@@ -1,0 +1,5 @@
+# local tooling / editor
+.claude/
+# scratch
+*.log
+site.html
