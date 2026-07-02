@@ -34,13 +34,18 @@ seen_asset=set(); seen_page=set()
 
 KIOSK_FIX_CSS="""/* ============================================================
    KIOSK LABEL FIX - the ONLY change vs. the live kumaranhospitals.com
-   Keeps the 5 quick-access service labels on a single line (no wrapping).
+   Keeps the 5 quick-access service labels on a single line (no wrapping)
+   and gives each label the full tile width so the longest one
+   ("INFRASTRUCTURE") never clips, at any panel width.
    ============================================================ */
-.elementor-element-c4f72c1 .elementor-widget-heading{width:100%!important;max-width:100%!important;}
+.elementor-element-c4f72c1 .elementor-widget-heading,
+.elementor-element-c4f72c1 .elementor-widget-heading > .elementor-widget-container{
+  width:100%!important;max-width:100%!important;padding-left:0!important;padding-right:0!important;}
+.elementor-element-c4f72c1 .e-con.e-child{padding-left:4px!important;padding-right:4px!important;}
 .elementor-element-c4f72c1 .elementor-heading-title,
 .elementor-element-c4f72c1 .elementor-heading-title a{
   display:block!important;width:100%!important;white-space:nowrap!important;
-  font-size:clamp(11px,1.9vw,19px)!important;line-height:1.25!important;
+  font-size:clamp(10px,1.5vw,18px)!important;line-height:1.25!important;
   letter-spacing:0!important;text-align:center!important;overflow:visible!important;text-overflow:clip!important;}
 """
 
@@ -99,7 +104,7 @@ def rewrite(html):
     for h in ("https://"+HOST,"http://"+HOST,"https:\\/\\/"+HOST,"http:\\/\\/"+HOST):
         html=html.replace(h,"")
     if "kiosk-fix.css" not in html:
-        html=html.replace("</head>",'<link rel="stylesheet" href="/kiosk-fix.css?v=2" media="all" />\n</head>',1)
+        html=html.replace("</head>",'<link rel="stylesheet" href="/kiosk-fix.css?v=4" media="all" />\n</head>',1)
     return html
 
 def crawl_page(u):

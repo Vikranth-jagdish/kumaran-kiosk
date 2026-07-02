@@ -1,10 +1,25 @@
 /* ============================================================
    KIOSK LABEL FIX - the ONLY change vs. the live kumaranhospitals.com
-   Keeps the 5 quick-access service labels on a single line (no wrapping).
+   Keeps the 5 quick-access service labels on a single line (no wrapping)
+   and gives each label the full tile width so the longest one
+   ("INFRASTRUCTURE") never clips, at any panel width.
    ============================================================ */
-.elementor-element-c4f72c1 .elementor-widget-heading{width:100%!important;max-width:100%!important;}
+
+/* let the heading widget span the whole tile (Elementor pins it to ~60px) */
+.elementor-element-c4f72c1 .elementor-widget-heading,
+.elementor-element-c4f72c1 .elementor-widget-heading > .elementor-widget-container{
+  width:100%!important;max-width:100%!important;
+  padding-left:0!important;padding-right:0!important;
+}
+/* reclaim the tile's side padding so the label has room to center */
+.elementor-element-c4f72c1 .e-con.e-child{
+  padding-left:4px!important;padding-right:4px!important;
+}
 .elementor-element-c4f72c1 .elementor-heading-title,
 .elementor-element-c4f72c1 .elementor-heading-title a{
-  display:block!important;width:100%!important;white-space:nowrap!important;
-  font-size:clamp(11px,1.9vw,19px)!important;line-height:1.25!important;
-  letter-spacing:0!important;text-align:center!important;overflow:visible!important;text-overflow:clip!important;}
+  display:block!important;width:100%!important;
+  white-space:nowrap!important;
+  font-size:clamp(10px,1.5vw,18px)!important;
+  line-height:1.25!important;letter-spacing:0!important;
+  text-align:center!important;overflow:visible!important;text-overflow:clip!important;
+}
